@@ -3,7 +3,7 @@
   "name": "VaultLlama",
   "version": "0.1.0",
   "minAppVersion": "1.4.0",
-  "description": "Local AI chat using Ollama with safe context controls.",
+  "description": "Chat with local Ollama models inside your vault.",
   "author": "Tom Han",
   "isDesktopOnly": true
 }
