@@ -1,0 +1,187 @@
+.occ-root, .occ-panel { height: 100%; min-height: 0; }
+.occ-root { padding: 0; }
+.occ-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  min-height: 0;
+  box-sizing: border-box;
+}
+.occ-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--background-primary);
+  padding-bottom: 2px;
+}
+.occ-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.occ-status {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.occ-chat-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.occ-msg {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--background-primary-alt);
+  position: relative;
+}
+.occ-msg-user {
+  margin-left: 18px;
+}
+.occ-msg-assistant-wrap {
+  padding-top: 32px;
+}
+.occ-msg-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.occ-float-actions {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.occ-target-tag {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.occ-composer {
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.occ-prompt-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.occ-input {
+  width: 100%;
+  min-height: 72px;
+  resize: vertical;
+  line-height: 1.6;
+  overflow-y: hidden;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+.occ-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.occ-preview-pre {
+  max-height: 280px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.occ-toolbar-group > span { color: var(--text-normal); font-weight: 600; }
+.occ-status { min-height: 18px; }
+.occ-input::placeholder { color: var(--text-faint); }
+
+.occ-selection-preview {
+  font-size: 12px;
+  color: var(--text-muted);
+  border: 1px dashed var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--background-secondary);
+}
+
+.occ-selection-preview.is-hidden {
+  display: none;
+}
+
+
+.occ-small-btn { padding: 2px 8px; font-size: 12px; }
+
+
+.occ-input-scroll {
+  overflow-y: auto;
+}
+
+.occ-input-size-12 {
+  font-size: 12px;
+}
+
+.occ-input-size-13 {
+  font-size: 13px;
+}
+
+.occ-input-size-14 {
+  font-size: 14px;
+}
+
+.occ-input-size-15 {
+  font-size: 15px;
+}
+
+.occ-input-size-16 {
+  font-size: 16px;
+}
+
+.occ-input-size-17 {
+  font-size: 17px;
+}
+
+.occ-input-size-18 {
+  font-size: 18px;
+}
+
+.occ-input-size-19 {
+  font-size: 19px;
+}
+
+.occ-input-size-20 {
+  font-size: 20px;
+}
+
+.occ-input-size-21 {
+  font-size: 21px;
+}
+
+.occ-input-size-22 {
+  font-size: 22px;
+}
+
+.occ-input-size-23 {
+  font-size: 23px;
+}
+
+.occ-input-size-24 {
+  font-size: 24px;
+}
+
