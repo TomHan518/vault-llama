@@ -10,22 +10,23 @@
 }
 .occ-toolbar {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
   align-items: center;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 2;
   background: var(--background-primary);
-  padding-bottom: 2px;
+  padding-bottom: 4px;
 }
 .occ-toolbar-group {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.occ-status {
-  font-size: 12px;
+.occ-toolbar-title {
+  font-size: 13px;
+  font-weight: 600;
   color: var(--text-muted);
 }
 .occ-chat-body {
@@ -38,28 +39,35 @@
 }
 .occ-msg {
   border: 1px solid var(--background-modifier-border);
-  border-radius: 12px;
-  padding: 10px 12px;
+  border-radius: 14px;
+  padding: 12px 14px;
   background: var(--background-primary-alt);
   position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 .occ-msg-user {
-  margin-left: 18px;
+  margin-left: 24px;
+  background: var(--background-primary-alt);
+}
+.occ-msg-assistant {
+  background: var(--background-secondary);
 }
 .occ-msg-assistant-wrap {
-  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .occ-msg-body {
   white-space: pre-wrap;
   word-break: break-word;
+  line-height: 1.6;
 }
 .occ-float-actions {
-  position: absolute;
-  right: 8px;
-  top: 6px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 6px;
+  flex-wrap: wrap;
 }
 .occ-target-tag {
   max-width: 140px;
@@ -80,11 +88,6 @@
   gap: 8px;
   flex: 0 0 auto;
 }
-.occ-prompt-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
 .occ-input {
   width: 100%;
   min-height: 72px;
@@ -92,12 +95,59 @@
   line-height: 1.6;
   overflow-y: hidden;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 .occ-actions {
   display: flex;
   gap: 8px;
-  justify-content: flex-end;
+  align-items: center;
+}
+.occ-actions-inline {
+  justify-content: space-between;
+}
+.occ-model-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.occ-model-select {
+  min-width: 0;
+  max-width: 220px;
+  flex: 1 1 180px;
+}
+.occ-send-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.occ-icon-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 0;
+}
+.occ-icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+.occ-icon-btn-ghost {
+  background: var(--background-secondary-alt);
+}
+.occ-icon-btn-primary {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+.occ-icon-btn-primary:hover,
+.occ-icon-btn-primary:focus-visible {
+  background: var(--interactive-accent-hover);
+  border-color: var(--interactive-accent-hover);
 }
 .occ-preview-pre {
   max-height: 280px;
@@ -105,83 +155,33 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
-
-.occ-toolbar-group > span { color: var(--text-normal); font-weight: 600; }
-.occ-status { min-height: 18px; }
 .occ-input::placeholder { color: var(--text-faint); }
-
-.occ-selection-preview {
-  font-size: 12px;
-  color: var(--text-muted);
-  border: 1px dashed var(--background-modifier-border);
-  border-radius: 8px;
-  padding: 8px 10px;
-  white-space: pre-wrap;
-  word-break: break-word;
-  background: var(--background-secondary);
-}
-
-.occ-selection-preview.is-hidden {
-  display: none;
-}
-
-
 .occ-small-btn { padding: 2px 8px; font-size: 12px; }
-
-
-.occ-input-scroll {
-  overflow-y: auto;
+.occ-input-scroll { overflow-y: auto; }
+.occ-input-size-12 { font-size: 12px; }
+.occ-input-size-13 { font-size: 13px; }
+.occ-input-size-14 { font-size: 14px; }
+.occ-input-size-15 { font-size: 15px; }
+.occ-input-size-16 { font-size: 16px; }
+.occ-input-size-17 { font-size: 17px; }
+.occ-input-size-18 { font-size: 18px; }
+.occ-input-size-19 { font-size: 19px; }
+.occ-input-size-20 { font-size: 20px; }
+.occ-input-size-21 { font-size: 21px; }
+.occ-input-size-22 { font-size: 22px; }
+.occ-input-size-23 { font-size: 23px; }
+.occ-input-size-24 { font-size: 24px; }
+.is-hidden { display: none !important; }
+.occ-input-busy { opacity: 0.9; }
+.occ-msg-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
 }
-
-.occ-input-size-12 {
-  font-size: 12px;
+.occ-composer .mod-cta[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
-
-.occ-input-size-13 {
-  font-size: 13px;
-}
-
-.occ-input-size-14 {
-  font-size: 14px;
-}
-
-.occ-input-size-15 {
-  font-size: 15px;
-}
-
-.occ-input-size-16 {
-  font-size: 16px;
-}
-
-.occ-input-size-17 {
-  font-size: 17px;
-}
-
-.occ-input-size-18 {
-  font-size: 18px;
-}
-
-.occ-input-size-19 {
-  font-size: 19px;
-}
-
-.occ-input-size-20 {
-  font-size: 20px;
-}
-
-.occ-input-size-21 {
-  font-size: 21px;
-}
-
-.occ-input-size-22 {
-  font-size: 22px;
-}
-
-.occ-input-size-23 {
-  font-size: 23px;
-}
-
-.occ-input-size-24 {
-  font-size: 24px;
-}
-

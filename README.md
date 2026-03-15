@@ -12,7 +12,6 @@ Local AI chat for Obsidian using Ollama, with explicit controls for sending loca
   - Current note
 - Preview local context before it is sent
 - Copy or insert the last assistant answer into a note
-- Quick editor actions for explain, summarize, translate, and rewrite
 
 ## Installation
 
@@ -31,11 +30,8 @@ Local AI chat for Obsidian using Ollama, with explicit controls for sending loca
 1. Start Ollama locally
 2. Open the plugin view from the ribbon icon or the `Open chat` command
 3. Refresh the model list if needed
-4. Choose a scope:
-   - **Off**: send only the prompt
-   - **Saved selection**: send the saved editor selection after preview
-   - **Current note**: send a capped slice of the current note after preview
-5. Ask your question and review the answer
+4. Ask your question and review the answer
+5. Use **Copy last answer** or **Insert last answer at cursor** if needed
 
 ## Privacy and network disclosure
 
@@ -44,9 +40,8 @@ This plugin sends prompts to an Ollama-compatible HTTP endpoint.
 - Default endpoint: `http://127.0.0.1:11434`
 - The plugin is marked **desktop only**
 - Remote endpoints are disabled by default
-- Selected text or current note content may be sent **only when the user explicitly chooses a local context scope and confirms the preview**
-- The plugin stores plugin settings and optional local session history using Obsidian plugin data storage
-- No telemetry, ads, account requirement, or payment flow is included
+- This plugin does not include telemetry, ads, account requirements, or payment flow
+- Plugin settings are stored using Obsidian plugin data storage
 
 ## Release notes
 
@@ -55,8 +50,7 @@ For community plugin releases:
 - Keep the GitHub release tag exactly equal to the plugin version
 - For this package, the release tag should be: `0.1.0`
 - Upload `manifest.json`, `main.js`, and `styles.css` as individual release assets
-- Keep `README.md` and `versions.json` in the repository root
-
+- Keep `README.md`, `LICENSE`, and `versions.json` in the repository root
 
 ## Troubleshooting
 
@@ -66,4 +60,4 @@ For community plugin releases:
 
 ## Remote endpoint warning
 
-If you enable a remote endpoint, any prompt and local context you choose to send will leave your device and be transmitted to that remote server. Review that server's privacy and security controls before use.
+If you enable a remote endpoint, any prompt content you send will leave your device and be transmitted to that remote server. Review that server's privacy and security controls before use.
