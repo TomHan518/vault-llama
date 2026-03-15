@@ -1,21 +1,72 @@
 # VaultLlama
 
-Local AI chat for Obsidian using Ollama, with explicit controls for sending local note context.
+A desktop-only Obsidian plugin for chatting with a local Ollama model from a side panel.
 
-## Features
+VaultLlama is designed for a simple local workflow:
+- open a chat view inside Obsidian
+- select an installed Ollama model
+- send prompts to your local Ollama endpoint
+- copy the latest answer or insert it into the current note
 
-- Chat with a local Ollama model inside a sidebar view
-- Refresh and select installed models
-- Use local context safely:
-  - Off
-  - Saved selection
-  - Current note
-- Preview local context before it is sent
-- Copy or insert the last assistant answer into a note
+## What it does
+
+### Core features
+
+- Sidebar chat view inside Obsidian
+- Refresh and select installed Ollama models
+- Streaming responses with a stop button
+- Clear the current chat session from the sidebar
+- Copy the latest assistant answer to the clipboard
+- Insert the latest assistant answer at the current cursor position in the active note
+
+### Available commands
+
+- **Open chat**
+- **Copy last answer**
+- **Insert last answer at cursor**
+
+### Settings
+
+VaultLlama currently supports these settings:
+
+- **Base URL** for the Ollama-compatible endpoint
+- **Temperature**
+- **Top-p**
+- **Repeat penalty**
+- **Context size (`num_ctx`)**
+- **Max tokens (`num_predict`)**
+- **Input font size**
+- **Auto-grow input**
+- **Input max height**
+- **Send conversation history to model**
+- **Allow remote base URL** (disabled by default)
+
+## What it does not do
+
+This version does **not** currently include:
+
+- current note context injection
+- saved selection context injection
+- explain / summarize / translate / rewrite editor actions
+- telemetry or analytics
+- account login
+- cloud sync
+
+## Requirements
+
+- Obsidian desktop
+- Ollama installed and running
+- At least one Ollama model installed locally
+
+Default local endpoint:
+
+- `http://127.0.0.1:11434`
+
+The plugin is marked **desktop only** because it uses desktop-only runtime APIs.
 
 ## Installation
 
-### Manual install
+### Manual installation
 
 1. Create a folder named `vault-llama` inside `.obsidian/plugins/`
 2. Copy these files into that folder:
@@ -23,41 +74,87 @@ Local AI chat for Obsidian using Ollama, with explicit controls for sending loca
    - `main.js`
    - `styles.css`
 3. Reload Obsidian
-4. Enable **VaultLlama** in **Settings → Community plugins**
+4. Enable **VaultLlama** in **Settings -> Community plugins**
+
+### Community plugin release
+
+If you publish through GitHub releases for Obsidian community submission, upload these release assets:
+
+- `manifest.json`
+- `main.js`
+- `styles.css`
+
+The release tag should match the plugin version in `manifest.json`.
 
 ## Usage
 
-1. Start Ollama locally
-2. Open the plugin view from the ribbon icon or the `Open chat` command
-3. Refresh the model list if needed
-4. Ask your question and review the answer
-5. Use **Copy last answer** or **Insert last answer at cursor** if needed
+1. Start Ollama on your computer
+2. Open **VaultLlama** from the ribbon icon or the **Open chat** command
+3. Refresh models if the model list is empty
+4. Select a model from the dropdown
+5. Enter a prompt in the chat box and send it
+6. Optionally:
+   - stop generation while streaming
+   - copy the latest answer
+   - insert the latest answer into the current note
 
-## Privacy and network disclosure
+When you use **Insert last answer at cursor**, the plugin inserts a section like this into the active note:
 
-This plugin sends prompts to an Ollama-compatible HTTP endpoint.
+```md
+## 🤖 AI Response
 
-- Default endpoint: `http://127.0.0.1:11434`
-- The plugin is marked **desktop only**
-- Remote endpoints are disabled by default
-- This plugin does not include telemetry, ads, account requirements, or payment flow
+<assistant answer>
+```
+
+## Privacy and network behavior
+
+VaultLlama sends requests to an Ollama-compatible HTTP endpoint.
+
+### Default behavior
+
+- Default Base URL is `http://127.0.0.1:11434`
+- Remote endpoints are blocked unless you explicitly enable **Allow remote base URL**
+- No telemetry, ads, account system, or payment flow is included
 - Plugin settings are stored using Obsidian plugin data storage
 
-## Release notes
+### Conversation history
 
-For community plugin releases:
+If **Send conversation history to model** is enabled, previous messages from the current chat session are included in each new request.
 
-- Keep the GitHub release tag exactly equal to the plugin version
-- For this package, the release tag should be: `0.1.0`
-- Upload `manifest.json`, `main.js`, and `styles.css` as individual release assets
-- Keep `README.md`, `LICENSE`, and `versions.json` in the repository root
+If it is disabled, requests are sent as single-turn prompts plus the built-in system instruction.
+
+### Important warning
+
+If you enable a remote Base URL, your prompts and any chat history included in the request will be sent to that remote server. Review the privacy and security posture of that server before using it.
 
 ## Troubleshooting
 
-- If no models appear, make sure Ollama is running and the Base URL is correct.
-- If requests fail, confirm that your selected model is installed locally.
-- If the plugin cannot connect to `127.0.0.1`, check firewall rules and whether Ollama is listening on the expected port.
+### No models appear
 
-## Remote endpoint warning
+- Make sure Ollama is running
+- Confirm the Base URL is correct
+- Use the refresh button in the chat view
 
-If you enable a remote endpoint, any prompt content you send will leave your device and be transmitted to that remote server. Review that server's privacy and security controls before use.
+### Model requests fail
+
+- Confirm the selected model is installed in Ollama
+- Check whether Ollama is reachable at the configured Base URL
+- Try a smaller model if your system is low on memory
+
+### Cannot connect to Ollama
+
+- Confirm Ollama is listening on `127.0.0.1:11434` or your configured URL
+- Check firewall or local security rules
+- If you changed the Base URL to a remote host, verify that **Allow remote base URL** is enabled
+
+### Insert does nothing
+
+- Open a note first
+- Place the cursor in the editor
+- Run **Insert last answer at cursor** only after the plugin has received an answer
+
+## Version
+
+Current documented package version:
+
+- `0.1.0`
